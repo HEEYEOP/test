@@ -24,13 +24,19 @@ public class HomeController {
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping(value="/")
-	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
-	    MemberVO mVO = memberService.getMember("12345678");
-	    System.out.println(mVO);
-		mv.setViewName("/main/home");
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public ModelAndView mainGet(ModelAndView mv) throws Exception{
+	    mv.setViewName("/main/home");
 	    mv.addObject("setHeader", "타일즈");
 	    return mv;
+	}
+	
+	@RequestMapping(value="/", method=RequestMethod.POST)
+	public String mainPost(MemberVO loginInfo) throws Exception{
+	    //System.out.println(loginInfo);
+	    MemberVO user = memberService.signin(loginInfo);
+	    System.out.println(user);
+		return "redirect:/";
 	}
 
 	
