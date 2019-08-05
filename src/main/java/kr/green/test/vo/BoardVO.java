@@ -1,5 +1,6 @@
 package kr.green.test.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardVO {
@@ -49,8 +50,13 @@ public class BoardVO {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public Date getRegistered() {
-		return registered;
+	public String getRegistered() {
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return f.format(registered);
+	}
+	public String getRegisteredUntilDay() {
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		return f.format(registered);
 	}
 	public void setRegistered(Date registered) {
 		this.registered = registered;
