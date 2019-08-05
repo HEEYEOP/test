@@ -1,8 +1,10 @@
-package kr.green.test;
+package kr.green.test.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +34,19 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String mainPost(MemberVO loginInfo) throws Exception{
+	public String mainPost(MemberVO loginInfo, Model model) throws Exception{
 	    //System.out.println(loginInfo);
 	    MemberVO user = memberService.signin(loginInfo);
+	    model.addAttribute("user", user);
 	    System.out.println(user);
+	    
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/signout", method=RequestMethod.GET)
+	public String signoutGet(HttpServletRequest r) throws Exception{
+		r.getSession().removeAttribute("user");
+	    
 		return "redirect:/";
 	}
 
