@@ -66,6 +66,9 @@ public class BoardController {
 	@RequestMapping(value="/board/display", method=RequestMethod.GET)
 	public ModelAndView boardDisplayGet(ModelAndView mv, Integer num, Criteria cri) {
 		BoardVO board = boardService.getBoard(num);
+		
+		board = boardService.increaseViews(board); //-??????????????????????????????????
+		
 		mv.setViewName("/board/display");
 		mv.addObject("board", board);
 		mv.addObject("cri", cri);

@@ -22,5 +22,7 @@ public interface BoardService {
 
 	public void deleteBoard(Integer num);
 
+	public BoardVO increaseViews(BoardVO board);
+
 
 }
