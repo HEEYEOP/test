@@ -72,6 +72,31 @@ public class BoardController {
 	    return mv;
 	}
 	
+	@RequestMapping(value="/board/modify", method=RequestMethod.GET)
+	public ModelAndView boardModifyGet(ModelAndView mv, Integer num, Criteria cri, HttpServletRequest r) {
+		
+		boolean isWriter = boardService.isWriter(num,r);
+		BoardVO board;
+		if(isWriter) {
+			 board = boardService.getBoard(num);
+			 mv.setViewName("/board/modify");
+		}else{
+			 board = null;
+			 mv.setViewName("redirect:/board/list");
+		}
+		
+		mv.addObject("board", board);
+		mv.addObject("cri", cri);
+	    return mv;
+	}
+	
+	@RequestMapping(value="/board/modify", method=RequestMethod.POST)
+	public String boardModifyPost(BoardVO bVO) {
+		//System.out.println(bVO);
+		boardService.modifyBoard(bVO);
+		return "redirect:/board/display";
+	}
+	
 	
 	
 

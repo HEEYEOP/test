@@ -68,6 +68,10 @@
   	select * from board where num=#{num}
   </select>
   
+  <update id="updateBoard">
+  	update board set title=#{board.title}, contents=#{board.contents}, file=#{board.file}, views=#{board.views}, valid=#{board.valid} where num=#{board.num}
+  </update>
+  
   
   
   
