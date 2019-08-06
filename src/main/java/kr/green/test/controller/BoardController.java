@@ -74,8 +74,10 @@ public class BoardController {
 	public String boardRegisterPost(BoardVO bVO, MultipartFile file2) throws IOException, Exception {
 		//System.out.println(bVO);
 		
-		String file = UploadFileUtils.uploadFile(uploadPath, file2.getOriginalFilename(), file2.getBytes());
-		bVO.setFile(file);
+		if(file2.getOriginalFilename().length() != 0) { //첨부파일을 등록하지 않았을 때 , 발생하는 에러의 예외처리
+			String file = UploadFileUtils.uploadFile(uploadPath, file2.getOriginalFilename(), file2.getBytes());
+			bVO.setFile(file);
+		}
 		boardService.registerBoard(bVO);
 	    return "redirect:/board/list";
 	}
