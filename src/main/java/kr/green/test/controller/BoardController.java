@@ -44,10 +44,23 @@ public class BoardController {
 		ArrayList<BoardVO> list = boardService.getBoardList(cri, valid);
 		int totalCount = boardService.getTotalCount(cri,valid);
 		PageMaker pm = pageMakerService.getPageMaker(displayPageNum,cri,totalCount);
-		System.out.println(pm);
+		//System.out.println(pm);
 		mv.addObject("list", list);
 		mv.addObject("pageMaker", pm);
 	    return mv;
+	}
+	
+	@RequestMapping(value="/board/register", method=RequestMethod.GET)
+	public ModelAndView boardRegisterGet(ModelAndView mv) throws Exception{
+		mv.setViewName("/board/register");
+	    return mv;
+	}
+	
+	@RequestMapping(value="/board/register", method=RequestMethod.POST)
+	public String boardRegisterPost(BoardVO bVO) throws Exception{
+		//System.out.println(bVO);
+		boardService.registerBoard(bVO);
+	    return "redirect:/board/list";
 	}
 	
 	

@@ -59,4 +59,19 @@
     	</otherwise>
     </choose>
   </select>
+  
+  <insert id="insertBoard">
+  	insert into board(title, contents, writer, file) values(#{board.title},#{board.contents},#{board.writer},#{board.file})
+  </insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </mapper>
