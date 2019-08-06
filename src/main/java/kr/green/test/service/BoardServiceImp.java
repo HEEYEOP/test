@@ -33,4 +33,9 @@ public class BoardServiceImp implements BoardService {
 		
 	}
 
+	@Override
+	public BoardVO getBoard(Integer num) {
+		return boardDao.selectBoard(num);
+	}
+
 }

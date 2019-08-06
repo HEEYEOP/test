@@ -21,10 +21,10 @@
 <script>
 	$(document).ready(function(){
 		$('#summernote').summernote({
-		  placeholder: 'Hello bootstrap 4',
+		  placeholder: '내용을 입력해주세요',
 		  tabsize: 2,
 		  height: 100,
-		  lang: 'ko-KR'
+		   lang: 'ko-KR'
 		});
 	});
 </script>

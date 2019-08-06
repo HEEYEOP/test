@@ -36,7 +36,7 @@ public class BoardController {
 	
 	
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
-	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) throws Exception{
+	public ModelAndView boardListGet(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/board/list");
 
 		String valid = "I";
@@ -51,16 +51,25 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/register", method=RequestMethod.GET)
-	public ModelAndView boardRegisterGet(ModelAndView mv) throws Exception{
+	public ModelAndView boardRegisterGet(ModelAndView mv) {
 		mv.setViewName("/board/register");
 	    return mv;
 	}
 	
 	@RequestMapping(value="/board/register", method=RequestMethod.POST)
-	public String boardRegisterPost(BoardVO bVO) throws Exception{
+	public String boardRegisterPost(BoardVO bVO) {
 		//System.out.println(bVO);
 		boardService.registerBoard(bVO);
 	    return "redirect:/board/list";
+	}
+	
+	@RequestMapping(value="/board/display", method=RequestMethod.GET)
+	public ModelAndView boardDisplayGet(ModelAndView mv, Integer num, Criteria cri) {
+		BoardVO board = boardService.getBoard(num);
+		mv.setViewName("/board/display");
+		mv.addObject("board", board);
+		mv.addObject("cri", cri);
+	    return mv;
 	}
 	
 	

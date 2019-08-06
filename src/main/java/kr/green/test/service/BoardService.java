@@ -12,5 +12,7 @@ public interface BoardService {
 
 	public void registerBoard(BoardVO bVO);
 
+	public BoardVO getBoard(Integer num);
+
 
 }
