@@ -20,5 +20,7 @@ public interface BoardService {
 
 	public boolean isWriter(Integer num, HttpServletRequest r);
 
+	public void deleteBoard(Integer num);
+
 
 }
