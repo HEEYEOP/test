@@ -47,6 +47,10 @@ public class BoardVO {
 	public String getFile() {
 		return file;
 	}
+	public String getFileName() { //---------------------------------새로만들어뜌 왜냐믄 사용자에게 파일명만 간단하게 보여주기 위해서
+		int index = file.indexOf("_");
+		return file.substring(index+1);
+	}
 	public void setFile(String file) {
 		this.file = file;
 	}
