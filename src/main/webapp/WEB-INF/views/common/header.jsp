@@ -23,6 +23,9 @@
 		<c:if test="${user ne null}">
 			<a href="<%=request.getContextPath()%>/signout" class="float-right">로그아웃</a>
 		</c:if>
+		<c:if test="${user eq null}">
+			<a href="<%=request.getContextPath()%>/signup" class="float-right">회원가입</a>
+		</c:if>
 	</div> 
 	
 </nav>
