@@ -113,10 +113,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/modify", method=RequestMethod.POST)
-	public String boardModifyPost(BoardVO bVO) {
+	public String boardModifyPost(BoardVO bVO, MultipartFile file2) throws IOException, Exception {
 		//System.out.println(bVO);
+		if(file2.getOriginalFilename().length() != 0) {
+			String file = UploadFileUtils.uploadFile(uploadPath, file2.getOriginalFilename(), file2.getBytes());
+			bVO.setFile(file);
+		}
 		boardService.modifyBoard(bVO);
-		return "redirect:/board/display";
+		return "redirect:/board/list";
 	}
 	
 	@RequestMapping(value="/board/delete", method=RequestMethod.GET)
